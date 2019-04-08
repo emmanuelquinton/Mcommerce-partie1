@@ -106,6 +106,12 @@ public class ProductController {
     }
 
 
+    @ApiOperation(value = "Récupère les produits triés par ordre alphabétique")
+    @GetMapping(value = "Products")
+    public List<Product> trierProduitsParOrdreAlphabetique() {
+        return productDao.findAllByOrderByNomAsc();
+    }
+
     @ApiOperation(value = "Récupère un produit et sa marge")
     @GetMapping(value = "/AdminProduits")
     public HashMap<Product, Integer> calculerMargeProduit() {
@@ -117,5 +123,6 @@ public class ProductController {
         });
         return results;
     }
+
 
 }
