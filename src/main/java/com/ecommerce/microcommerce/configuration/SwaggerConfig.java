@@ -14,9 +14,34 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("Produits")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.ecommerce.microcommerce.web"))
                 .paths(PathSelectors.regex("/Produits.*"))
                 .build();
     }
+
+
+
+   @Bean
+   public Docket apiPart1() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("Part 1")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.ecommerce.microcommerce.web"))
+                .paths(PathSelectors.regex("/Admin.*"))
+                .build();
+    }
+  
+  
+    @Bean
+    public Docket apiPart2() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("Part 2")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.ecommerce.microcommerce.web"))
+                .paths(PathSelectors.regex("/Products.*"))
+                .build();
+    }
 }
+

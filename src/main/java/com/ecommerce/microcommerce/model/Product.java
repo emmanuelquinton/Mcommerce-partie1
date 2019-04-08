@@ -75,4 +75,8 @@ public class Product {
                 ", prix=" + prix +
                 '}';
     }
+
+    public Integer getMarge() {
+        return prix - prixAchat;
+    }
 }
