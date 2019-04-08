@@ -1,0 +1,166 @@
+{
+	"info": {
+		"name": "Mcommerce",
+		"_postman_id": "03dd90ea-8889-13fa-6df2-6ec29d8d0fcc",
+		"description": "OpenClassroom formation : Construisez des Microservices \nhttps://openclassrooms.com/fr/courses/4668056-construisez-des-microservices/5123020-testez-votre-api-grace-a-postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Affichage de la marge",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "92e45811-56d1-4bdf-8a9e-f3b88637b359",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9090/AdminProduits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"AdminProduits"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Tris par ordre alphabétique",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "22a0f88f-c471-4c0a-8853-8296806fd37c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9090/Products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"Products"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Validation du prix de vente  == 0",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a79b38c-7e37-4e14-b1d0-369a5dc48c67",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response is ko\", function () {",
+							"    pm.response.to.have.status(500);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"marge\": 0,\n  \"nom\": \"Test partie 3\",\n  \"prix\": 0,\n  \"prixAchat\": 250\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9090/Produits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"Produits"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Validation du prix de vente  > 0",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c5b8e976-c3d7-4188-bb77-098f282ac448",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"product_should_be_created\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"marge\": 0,\n  \"nom\": \"Test partie 3\",\n  \"prix\": 50,\n  \"prixAchat\": 250\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9090/Produits",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"Produits"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
